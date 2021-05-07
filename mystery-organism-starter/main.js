@@ -95,20 +95,21 @@ while (pArray.length < 30) {
 const findMostRelated = array => {
   let mostRelated = 0;
   let mostRelatedSpecimen = [];
-  array.forEach(specimen1 => {
-    array.forEach(specimen2 => {
-      if (specimen1.dna != specimen2.dna){
-        if (specimen1.compareDNA(specimen2) > mostRelated){
-          mostRelatedSpecimen = [[specimen1, specimen2]];       
-          mostRelated = specimen1.compareDNA(specimen2);
-        } else if (specimen1.compareDNA(specimen2) === mostRelated) {
-          //if (mostRelatedSpecimen.indexOf([specimen2,specimen1]) > -1){
-            mostRelatedSpecimen.push([specimen1, specimen2]);
-          //};
+
+  for (let i = 0; i < array.length; i){
+    for (let j = 0; j < array.length; j++){
+      if (array[i].dna != array[j].dna){
+        if (array[i].compareDNA(array[j]) > mostRelated){
+          mostRelatedSpecimen = [[array[i],array[j]]];
+          mostRelated = array[i].compareDNA(array[j]);
+        } else if (array[i].compareDNA(array[j]) === mostRelated){
+          mostRelatedSpecimen.push([array[i],array[j]]);
         };
       };
-    });
-  });
+    };
+    array.shift();
+  };
+
   mostRelatedSpecimen.forEach(combo => {
     console.log(`Specimen #${combo[0].specimenNum} and specimen #${combo[1].specimenNum} share ${mostRelated}% of their DNA.`);
     if (mostRelated > 72.00){
