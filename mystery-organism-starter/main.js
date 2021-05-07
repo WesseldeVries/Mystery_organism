@@ -102,9 +102,9 @@ const findMostRelated = array => {
           mostRelatedSpecimen = [[specimen1, specimen2]];       
           mostRelated = specimen1.compareDNA(specimen2);
         } else if (specimen1.compareDNA(specimen2) === mostRelated) {
-          if (mostRelatedSpecimen.indexOf([specimen2,specimen1]) > -1){
+          //if (mostRelatedSpecimen.indexOf([specimen2,specimen1]) > -1){
             mostRelatedSpecimen.push([specimen1, specimen2]);
-          };
+          //};
         };
       };
     });
